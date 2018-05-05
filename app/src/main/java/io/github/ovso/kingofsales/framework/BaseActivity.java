@@ -11,10 +11,11 @@ import butterknife.Unbinder;
 import io.github.ovso.kingofsales.R;
 
 public abstract class BaseActivity extends AppCompatActivity {
-  private Unbinder unbinder;
   protected @BindView(R.id.toolbar) Toolbar toolbar;
+  private Unbinder unbinder;
 
   protected abstract @LayoutRes int getLayoutResId();
+
   protected abstract void onCreated();
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,9 +31,7 @@ public abstract class BaseActivity extends AppCompatActivity {
   }
 
   @Override protected void onDestroy() {
-    if (unbinder != null) {
-      unbinder.unbind();
-    }
+    unbinder.unbind();
     super.onDestroy();
   }
 }
